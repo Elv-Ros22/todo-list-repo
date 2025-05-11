@@ -1,0 +1,14 @@
+# user story 1
+
+    Adding Tasks
+        -As a user, I want to add tasks to my list so I can keep track of things I need to do.
+
+## user story 2
+
+    Completing Tasks
+        -As a user, I want to mark tasks as done so I know what I have finished
+
+### user story 3
+
+    Filtering Tasks
+        -As a user, I want to see only completed or incomplete tasks so I can focus on what needs attention.

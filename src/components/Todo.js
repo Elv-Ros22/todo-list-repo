@@ -1,30 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Todo() {
+function Todo({ todos, addTodo }) {
+  const [input, setInput] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (input.trim()) {
+      addTodo(input);
+      setInput("");
+    }
+  };
+
   return (
     <div>
-      <h1 style={{ textAlign: "center", color: "darkblue" }}>My To-Do List</h1>
-      <div style={{ textAlign: "center" }}>
+      <h1 style={{ textAlign: "center", color: "darkblue" }}>Todo List</h1>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Add a new task"
+          placeholder="Add a task..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
           style={{
             padding: "5px",
           }}
         />
-        <button
-          style={{
-            padding: "5px 10px",
-            marginLeft: "5px",
-            backgroundColor: "darkblue",
-            color: "white",
-            border: "none",
-          }}
-        >
-          Add
-        </button>
-      </div>
-      <ul style={{ listStyleType: "circle", paddingLeft: "20px" }}></ul>
+        <button type="submit">Add Task</button>
+      </form>
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>{todo.text}</li>
+        ))}
+      </ul>
     </div>
   );
 }

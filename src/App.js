@@ -11,30 +11,13 @@ function App() {
     setTodos([...todos, { id: Date.now(), text, completed: false }]);
   };
 
-  const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
-
-  const editTodo = (id, newText) => {
-    setTodos(
-      todos.map((todo) => (todo.id === id ? { ...todo, text: newText } : todo))
-    );
-  };
-
   return (
     <>
       <Navbar />
       <Routes>
         <Route
           path="/todos"
-          element={
-            <Todo
-              todos={todos}
-              addTodo={addTodo}
-              deleteTodo={deleteTodo}
-              editTodo={editTodo}
-            />
-          }
+          element={<Todo todos={todos} addTodo={addTodo} />}
         />
         <Route path="/contact" element={<ContactFrom />} />
       </Routes>

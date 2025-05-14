@@ -1,0 +1,14 @@
+.todo-container {
+  display: flex;
+  flex-direction: left;
+  align-items: center;
+}
+
+.todo-form {
+  flex-direction: left;
+  align-items: flex-start;
+}
+
+.todo-list {
+  flex-grow: 1;
+}

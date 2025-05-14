@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav>
+    <nav
+      style={{
+        display: "flex",
+        justifyContent: "right",
+        backgroundColor: "lightpink",
+        padding: "10px",
+      }}
+    >
       <Link
         to="/todos"
         style={{ margin: "10px", textDecoration: "none", color: "blue" }}

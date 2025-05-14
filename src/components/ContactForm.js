@@ -18,12 +18,13 @@ function ContactForm() {
 
   return (
     <div>
-      <h1>Contact</h1>
+      <h2>Contact</h2>
       <form>
         <label>First Name:</label>
         <input
           type="text"
           name="firstName"
+          placeholder="First Name"
           value={formData.firstName}
           onChange={handleChange}
         />
@@ -32,6 +33,7 @@ function ContactForm() {
         <input
           type="text"
           name="lastName"
+          placeholder="Last Name"
           value={formData.lastName}
           onChange={handleChange}
         />
@@ -40,13 +42,15 @@ function ContactForm() {
         <input
           type="email"
           name="email"
+          placeholder="Email"
           value={formData.email}
           onChange={handleChange}
         />
 
         <label>Comments:</label>
         <textarea
-          name="email"
+          name="comments"
+          placeholder="Comments"
           value={formData.comments}
           onChange={handleChange}
         />

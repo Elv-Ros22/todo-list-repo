@@ -1,34 +1,46 @@
 import React, { useState } from "react";
 
-function Todo({ todos, addTodo }) {
-  const [input, setInput] = useState("");
+function Todo() {
+  const [tasks, setTasks] = useState([]);
+  const [newTask, setNewTask] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (input.trim()) {
-      addTodo(input);
-      setInput("");
+  const addTask = () => {
+    if (newTask.trim()) {
+      setTasks([...tasks, { text: newTask, completed: false }]);
+      setNewTask("");
     }
+  };
+
+  const toggleComplete = (index) => {
+    const updatedTasks = tasks.map((task, i) =>
+      i === index ? { ...task, completed: !task.completed } : task
+    );
+    setTasks(updatedTasks);
+  };
+
+  const removeTask = (index) => {
+    setTasks(tasks.filter((_, i) => i !== index));
   };
 
   return (
     <div>
-      <h1 style={{ textAlign: "center", color: "darkblue" }}>Todo List</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Add a task..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          style={{
-            padding: "5px",
-          }}
-        />
-        <button type="submit">Add Task</button>
-      </form>
+      <h1>Todo List</h1>
+      <input
+        type="text"
+        value={newTask}
+        onChange={(e) => setNewTask(e.target.value)}
+      />
+      <button onClick={addTask}>Add Task</button>
       <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.text}</li>
+        {tasks.map((task, index) => (
+          <li
+            key={index}
+            style={{ textDecoration: task.completed ? "line-through" : "none" }}
+          >
+            {task.text}
+            <button onClick={() => toggleComplete(index)}>Done</button>
+            <button onClick={() => removeTask(index)}>Remove</button>
+          </li>
         ))}
       </ul>
     </div>

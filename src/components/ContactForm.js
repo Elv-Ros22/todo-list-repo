@@ -17,9 +17,15 @@ function ContactForm() {
   };
 
   return (
-    <div>
+    <div style={{ textAlign: "center", marginTop: "20px" }}>
       <h2>Contact</h2>
-      <form>
+      <form
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <label>First Name:</label>
         <input
           type="text"
